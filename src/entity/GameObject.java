@@ -19,7 +19,7 @@ public class GameObject {
         this.y = y;
     }
 
-    public void move() {
+    public  void move() {
         x = x + deltX;
         y = y + deltY;
     }

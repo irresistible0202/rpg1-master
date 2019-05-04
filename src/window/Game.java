@@ -1,11 +1,13 @@
 package window;
 
+import entity.Fur;
 import entity.Player;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
 import manage.KeyManager;
+import world.Level1;
 
 
 public class Game implements Runnable {
@@ -25,6 +27,8 @@ public class Game implements Runnable {
 	public KeyManager keyManager;
 
 	Player player = new Player(this, 30, 30);
+	Fur fur = new Fur(this, 300, 300);
+	Level1 level1 = new Level1();
 
 	
 	public Game(String title, int width, int height) {
@@ -43,7 +47,10 @@ public class Game implements Runnable {
 	//!!!ОБНОВЛЕНИЕ
 	private void move() {
 
-        player.move();
+        level1.move();
+		player.move();
+        fur.move();
+
 	}
 
 	//!!ПРОРИСОВКА
@@ -59,7 +66,9 @@ public class Game implements Runnable {
 		///////////////////////////////////////////////////////////////
 		g.clearRect(0, 0, width, height);
 
+		level1.render(g);
 		player.render(g);
+		fur.render(g);
 
 
 
